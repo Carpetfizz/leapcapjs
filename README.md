@@ -1,7 +1,7 @@
 leapcap.js
 =========
 
-Library for capturing and playing back 3D hand movements using the [Leap Motion](https://www.leapmotion.com/) and THREE JS(http://threejs.org/)
+Library for capturing and playing back 3D hand movements using the [Leap Motion](https://www.leapmotion.com/) and [THREE JS](http://threejs.org/)
 
 Project for 2014 [Synopsis Science & Technology Championship](http://science-fair.org/) by Ajay Ramesh - Junior at [Summit San Jose High School](http://www.summitsanjose.org/)
 
