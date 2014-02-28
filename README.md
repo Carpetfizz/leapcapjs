@@ -23,4 +23,4 @@ Then access the functions to control leapcap. You may bind these to buttons, key
     LeapCap.play() //plays back captured frames
     LeapCap.clearFrames() //deletes captured frames
 
-File with full implementation can be found in `leapcap_sample.html`
+File with full implementation can be found in [leapcap_sample.html](https://github.com/Carpetfizz/leapcapjs/blob/master/leapcap_sample.html).
