@@ -4,7 +4,9 @@
 		<script src="libs/leap.min.js"></script>
 		<script src="leapcap.js"></script>
 		<script>
+			var savedFrames = [];
 			LeapCap.initLeapCap({'scene':document.body});
+			savedFrames = LeapCap.getSavedFrames();
 		</script>
 		<button onclick="LeapCap.play()">Play</button>
 		<button onclick="LeapCap.record()">Record</button>

@@ -187,4 +187,11 @@ LeapCap.clearFrames = function(){
     SAVED_FRAMES.splice(0,SAVED_FRAMES.length);
 }
 
+/**
+ * Retrieves the SAVED_FRAMES
+ */
+LeapCap.getSavedFrames = function(){
+	return SAVED_FRAMES;
+}
+
 }(LeapCap = window.LeapCap||{}));
