@@ -26,17 +26,15 @@ Then access the functions to control leapcap. You may bind these to buttons, key
 Full implementation. Also can be found in `leapcap_sample.html`
 
     <html>
-	   <head>
-	   </head>
-	   <body>
-		<script src="libs/three.min.js"></script>
-		<script src="libs/leap.min.js"></script>
-		<script src="leapcap.js"></script>
-		<script>
-			LeapCap.initLeapCap({'scene':document.body});
-		</script>
-		<button onclick="LeapCap.play()">Play</button>
-		<button onclick="LeapCap.record()">Record</button>
-		<button onclick="LeapCap.clearFrames()">Delete</button>
+	 <body>
+	       <script src="libs/three.min.js"></script>
+	       <script src="libs/leap.min.js"></script>
+	       <script src="leapcap.js"></script>
+	       <script>
+	           LeapCap.initLeapCap({'scene':document.body});
+	       </script>
+	       <button onclick="LeapCap.play()">Play</button>
+	       <button onclick="LeapCap.record()">Record</button>
+	       <button onclick="LeapCap.clearFrames()">Delete</button>
 	</body>
-    </html>
+   </html>
