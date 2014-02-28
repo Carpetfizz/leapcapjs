@@ -1,3 +1,4 @@
+(function(LeapCap){
 /* THREE JS GLOBAL VARS*/
 var SCENE = new THREE.Scene();
 var CAMERA = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -35,29 +36,6 @@ var PAUSE_LEAP = false; //boolean to check if the LEAP_CONTROLLER listner should
 var PLAY_INTERVAL; //setInterval object
 var FRAME_NUMBER = 0; //counter to check how many frames PLAY_INTERVAL has played
 var RECORD_FRAMES = false; //boolean to check if SAVED_FRAMES should be updated
-
-/**
- * Starts to capture and display LEAP data
- * @param {config} config - contains information (usually from DOM) that leapcap uses to render scene
- * Connects and starts LEAP event listener on page load
- * Checks if PAUSE_LEAP is false to see if it should draw the scene
- * frameData contains the minimal data needed to draw a scene
- */
-function initLeapCap(config) {
-    config.scene.appendChild(RENDERER.domElement);
-    LEAP_CONTROLLER.connect();
-    LEAP_CONTROLLER.on('frame', function (frame) {
-        if (!PAUSE_LEAP) {
-            var frameData = {
-                'interaction_box': frame.interactionBox,
-                'hands': frame.hands
-            };
-            drawWith(frameData);
-        }
-    });
-    initHand();
-    render();
-}
 
 /**
  * Initializes the scene by preconstructing the hand and finger meshes, and putting them off screen
@@ -126,42 +104,6 @@ function drawWith(frameData, isPlaying, shouldRepeat) {
     }
 }
 
-
-/**
- * Plays captured frames using drawWith()
- * PAUSE_LEAP's the LEAP_CONTROLLER's listener
- * Animation has not started yet so FRAME_NUMBER is 0
- * Plays the animation at frame / 25 ms
- * FRAME_NUMBER is incremented by drawWith()
- */
-function play() {
-    FRAME_NUMBER = 0;
-    if(SAVED_FRAMES.length>0){
-        PLAY_INTERVAL = window.setInterval(function () {
-            drawWith(SAVED_FRAMES[FRAME_NUMBER], true, false);
-        }, 25);
-        PAUSE_LEAP = true;
-        RECORD_FRAMES = false;
-    }
-}
-
-/**
- * Enables drawWith() to save frames
- */
-function record(){
-    RECORD_FRAMES = !RECORD_FRAMES;
-    if(RECORD_FRAMES){
-        console.log("Started recording!");
-    }
-    else{
-        console.log("Stopped recording!");
-    }
-}
-
-function clearFrames(){
-    SAVED_FRAMES.splice(0,SAVED_FRAMES.length);
-}
-
 /**
  * Converts real world LEAP coordinates into THREE JS 3D Vector
  * @param {interactionBox} interactionBox - Area of interaction calculated by LEAP_CONTROLLER
@@ -180,3 +122,69 @@ function render() {
     requestAnimationFrame(render);
     RENDERER.render(SCENE, CAMERA);
 }
+
+/*EXPOSED FUNCTIONS*/
+
+/**
+ * Starts to capture and display LEAP data
+ * @param {config} config - contains information (usually from DOM) that leapcap uses to render scene
+ * Connects and starts LEAP event listener on page load
+ * Checks if PAUSE_LEAP is false to see if it should draw the scene
+ * frameData contains the minimal data needed to draw a scene
+ */
+LeapCap.initLeapCap = function (config) {
+    config.scene.appendChild(RENDERER.domElement);
+    LEAP_CONTROLLER.connect();
+    LEAP_CONTROLLER.on('frame', function (frame) {
+        if (!PAUSE_LEAP) {
+            var frameData = {
+                'interaction_box': frame.interactionBox,
+                'hands': frame.hands
+            };
+            drawWith(frameData);
+        }
+    });
+    initHand();
+    render();
+}
+
+
+/**
+ * Plays captured frames using drawWith()
+ * PAUSE_LEAP's the LEAP_CONTROLLER's listener
+ * Animation has not started yet so FRAME_NUMBER is 0
+ * Plays the animation at frame / 25 ms
+ * FRAME_NUMBER is incremented by drawWith()
+ */
+LeapCap.play = function() {
+    FRAME_NUMBER = 0;
+    if(SAVED_FRAMES.length>0){
+        PLAY_INTERVAL = window.setInterval(function () {
+            drawWith(SAVED_FRAMES[FRAME_NUMBER], true, false);
+        }, 25);
+        PAUSE_LEAP = true;
+        RECORD_FRAMES = false;
+    }
+}
+
+/**
+ * Enables drawWith() to save frames
+ */
+LeapCap.record = function(){
+    RECORD_FRAMES = !RECORD_FRAMES;
+    if(RECORD_FRAMES){
+        console.log("Started recording!");
+    }
+    else{
+        console.log("Stopped recording!");
+    }
+}
+
+/**
+ * Deletes all the items in SAVED_FRAMES array
+ */
+LeapCap.clearFrames = function(){
+    SAVED_FRAMES.splice(0,SAVED_FRAMES.length);
+}
+
+}(LeapCap = window.LeapCap||{}));
