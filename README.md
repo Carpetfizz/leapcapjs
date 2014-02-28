@@ -15,10 +15,10 @@ Include the necessary libraries in your HTML:
 
 Initialize with one function, passing in the element you want the WebGL renderer to reside. For example:
 
-    initLeapCap({'scene':document.body});
+    LeapCap.initLeapCap({'scene':document.body});
 
 Then access the functions to control leapcap. You may bind these to buttons, keyboard events, etc. 
 
-    record() //starts to capture frames
-    play() //plays back captured frames
-    clearFrames() //deletes captured frames
+    LeapCap.record() //starts to capture frames
+    LeapCap.play() //plays back captured frames
+    LeapCap.clearFrames() //deletes captured frames
