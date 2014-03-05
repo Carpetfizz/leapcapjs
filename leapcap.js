@@ -29,13 +29,8 @@
 (function(LeapCap){
 /* THREE JS GLOBAL VARS*/
 var SCENE = new THREE.Scene();
-var CAMERA = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
-var RENDERER = new THREE.WebGLRenderer();
-RENDERER.setSize(window.innerWidth, window.innerHeight);
-//document.body.appendChild(RENDERER.domElement);
-RENDERER.setClearColorHex(0xEEEEEE, 1.0);
-RENDERER.clear();
-CAMERA.position.z = 7;
+var CAMERA; 
+var RENDERER;
 
 /*THREE JS GEOMETRY DECLARATIONS*/
 var G_HAND_GEOMETRY = new THREE.CubeGeometry(0.75, 0.75, 0.75);
@@ -161,6 +156,14 @@ function render() {
  * frameData contains the minimal data needed to draw a scene
  */
 LeapCap.initLeapCap = function (config) {
+    var height = config.scene.offsetWidth;
+    var width = config.scene.offsetHeight
+    CAMERA = new THREE.PerspectiveCamera(65, width/height, 0.1, 1000);
+    RENDERER = new THREE.WebGLRenderer();
+    RENDERER.setSize(width,height);
+    RENDERER.setClearColorHex(0xEEEEEE, 1.0);
+    RENDERER.clear();
+    CAMERA.position.z = 7;
     config.scene.appendChild(RENDERER.domElement);
     LEAP_CONTROLLER.connect();
     LEAP_CONTROLLER.on('frame', function (frame) {
@@ -219,7 +222,7 @@ LeapCap.clearFrames = function(){
  * Retrieves the SAVED_FRAMES
  */
 LeapCap.getSavedFrames = function(){
-	return SAVED_FRAMES;
+    return SAVED_FRAMES;
 }
 
 }(LeapCap = window.LeapCap||{}));
