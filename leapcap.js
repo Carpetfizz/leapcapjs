@@ -156,8 +156,8 @@ function render() {
  * frameData contains the minimal data needed to draw a scene
  */
 LeapCap.initLeapCap = function (config) {
-    var height = config.scene.offsetWidth;
-    var width = config.scene.offsetHeight
+    var height = config.scene.offsetHeight;
+    var width = config.scene.offsetWidth
     CAMERA = new THREE.PerspectiveCamera(65, width/height, 0.1, 1000);
     RENDERER = new THREE.WebGLRenderer();
     RENDERER.setSize(width,height);
