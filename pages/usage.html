@@ -1,0 +1,50 @@
+
+
+<div class="page-header">
+  <h1>Usage <small>guidelines</small></h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Disclaimer</h3>
+  </div>
+  <div class="panel-body">
+    LeapcapJS is still a proof of concept and was made in a limited timeframe. It will be curated in the coming months to be more usable, and more stable. Howevever, you can still use the current build, with its current features. As always, please collaborate on GitHub!
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Usage</h3>
+  </div>
+  <div class="panel-body">
+    <h4>Add the necessary libraries to your HTML</h4>
+    	<pre class="brush :js">
+    	&lt;script&gt;libs/leap.min.js&lt;/script&gt;
+    	&lt;script&gt;libs/three.min.js&lt;/script&gt;
+    	&lt;script&gt;libs/leapcap.js&lt;/script&gt;</pre>
+    <h4>Prepare where the renderer should be </h4>
+    	<pre class="brush :js">
+    	&lt;style&gt;.my_canvas{width:800px;height:950px;}&lt;/style&gt;
+    	&lt;div class="my_canvas"&gt;&lt;/div&gt;</pre>
+    <small>The WebGL renderer uses the size of your element.</small>
+
+    <h4>Initialize LeapCapJS with one line</h4>
+    	<pre class="brush :js">
+    	//jQuery is not a dependency, but you may still use it to pass elements
+    	LeapCap.initLeapCap({'scene':$('.my_canvas')});</pre>
+    
+    <h4>Access LeapCap methods</h4>
+    	<pre class="brush :js">
+    	LeapCap.record() //starts to capture frames
+		LeapCap.play() //plays back captured frames
+		LeapCap.play(savedFrames) //plays back a saved array of captured frames, retrieved using LeapCap.getSavedFrames()
+		LeapCap.clearFrames() //deletes captured frames
+		LeapCap.getSavedFrames() //returns an array of saved motion data.</pre>
+  </div>
+</div>
+
+<script>SyntaxHighlighter.highlight()</script>
+
+
+

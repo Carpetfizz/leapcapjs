@@ -9,6 +9,11 @@ LeapcapJS.config(function($routeProvider){
 			controller: 'mainController'
 		})
 
+		.when('/usage',{
+			templateUrl: 'pages/usage.html',
+			controller: 'usageController'
+		})
+
 		.when('/example',{
 			templateUrl: 'pages/example.html',
 			controller: 'exampleController'
@@ -24,6 +29,9 @@ LeapcapJS.config(function($routeProvider){
 
 
 LeapcapJS.controller('mainController',function($scope){
+});
+
+LeapcapJS.controller('usageController',function($scope){
 });
 
 LeapcapJS.controller('exampleController',function($scope){
