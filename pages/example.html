@@ -1,0 +1,45 @@
+<script>
+	$(document).ready(function(){
+		$('#button_play').on('click',function(){
+			LeapCap.play();
+		});
+		$('#button_record').on('click',function(){
+			var isRecording = LeapCap.record();
+			if(isRecording){
+				$('#button_record').text('Stop');
+			}
+			else{
+				$('#button_record').text('Record');
+			}
+		});
+
+	});
+</script>
+<style>
+	#hand-canvas{
+		width: 1107;
+		height: 600;
+		align: center;
+	}
+	.btn{
+		margin: 5px;
+	}
+</style>
+
+<div class="page-header">
+  <h1>Example <small>uses <a href="http://github.com/carpetfizz/leapcapjs" target="_blank">leapcap.js</a></small></h1>
+ </div>
+
+<script>
+	LeapCap.initLeapCap({'scene':document.getElementById('hand-canvas')});
+</script>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<center>
+	  	<button type="button" id="button_play" class="btn btn-success">Play</button>
+		<button type="button" id="button_record" class="btn btn-danger">Record</button>
+	</center>
+    <div id="hand-canvas"></div>
+  </div>
+</div>
