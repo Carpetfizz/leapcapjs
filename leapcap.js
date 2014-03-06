@@ -187,14 +187,21 @@ LeapCap.initLeapCap = function (config) {
  * Plays the animation at frame / 25 ms
  * FRAME_NUMBER is incremented by drawWith()
  */
-LeapCap.play = function() {
+LeapCap.play = function(frames) {
     FRAME_NUMBER = 0;
-    if(SAVED_FRAMES.length>0){
-        PLAY_INTERVAL = window.setInterval(function () {
-            drawWith(SAVED_FRAMES[FRAME_NUMBER], true, false);
-        }, 25);
-        PAUSE_LEAP = true;
-        RECORD_FRAMES = false;
+    var frame_array;
+    if(frames){
+        frame_array = frames;
+    }
+    else{
+        frame_array = SAVED_FRAMES
+    }
+    if(frame_array.length>0){
+    PLAY_INTERVAL = window.setInterval(function () {
+        drawWith(frame_array[FRAME_NUMBER], true, false);
+    }, 25);
+    PAUSE_LEAP = true;
+    RECORD_FRAMES = false;
     }
 }
 
