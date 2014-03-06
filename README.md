@@ -23,6 +23,7 @@ Then access the functions to control leapcap. You may bind these to buttons, key
 
     LeapCap.record() //starts to capture frames
     LeapCap.play() //plays back captured frames
+    LeapCap.play(savedFrames) //plays back a saved array of captured frames, retrieved using LeapCap.getSavedFrames()
     LeapCap.clearFrames() //deletes captured frames
     LeapCap.getSavedFrames() //returns an array of saved motion data.
 
