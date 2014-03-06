@@ -28,6 +28,11 @@ Then access the functions to control leapcap. You may bind these to buttons, key
 
 File with full implementation can be found in [leapcap_sample.html](https://github.com/Carpetfizz/leapcapjs/blob/master/leapcap_sample.html).
 
+###Todo###
+* Better reporting for exposed functions (ie: isConnected, isPlaying, isRecording, stoppedRecord, etc)
+* Better error reporting from the Leap
+* Give complete control over the canvas
+
 
 ###MIT License###
 
