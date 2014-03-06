@@ -18,8 +18,14 @@ Include the necessary libraries in your HTML:
 Initialize with one function, passing in the element you want the WebGL renderer to reside. For example:
 
     LeapCap.initLeapCap({'scene':document.body});
+    
+The ThreeJS render window will size itself to the size of your `scene` element.
+    
+NOTE: jQuery is not a dependency for LeapcapJS, but it can be used to initialize the DOM.
 
-Then access the functions to control leapcap. You may bind these to buttons, keyboard events, etc. 
+    LeapCap.initLeapCap({'scene':$('#scene_div')});
+
+Accessible functions for LeapCap. You may bind these to buttons, keyboard events, etc. 
 
     LeapCap.record() //starts to capture frames
     LeapCap.play() //plays back captured frames
