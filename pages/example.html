@@ -12,6 +12,9 @@
 				$('#button_record').text('Record');
 			}
 		});
+		$('#button_delete').on('click',function(){
+			LeapCap.clearFrames();
+		});
 
 	});
 </script>
@@ -39,6 +42,7 @@
   	<center>
 	  	<button type="button" id="button_play" class="btn btn-success">Play</button>
 		<button type="button" id="button_record" class="btn btn-danger">Record</button>
+		<button type="button" id="button_delete" class="btn btn-warning">Delete</button>
 	</center>
     <div id="hand-canvas"></div>
   </div>
